@@ -1,0 +1,12 @@
+
+server:
+  port: 8088
+spring:
+  rabbitmq:
+    addresses: 10.0.0.2
+  cloud:
+    stream:
+      bindings:
+       evidenceRequestCreated:
+         destination: evidence-request-created
+         contentType: application/json
