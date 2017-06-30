@@ -3,6 +3,7 @@ package com.sprinthive.evidence.mgmt.id.demo.service;
 import com.sprinthive.evidence.mgmt.id.demo.model.IdDocData;
 import com.sprinthive.evidence.mgmt.id.demo.model.IdentityEvidenceRequest;
 import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -19,10 +20,9 @@ import java.util.logging.Level;
 @EnableBinding({ConsumerChannels.class})
 @Log
 @Service
-@EnableIntegration
-@EnableRetry
 public class EvidenceRequestListener {
 
+    @Autowired
     private IdentityUpdater identityUpdater;
 
     @StreamListener("evidenceRequestCreated")
@@ -37,7 +37,6 @@ public class EvidenceRequestListener {
         try {
             identityUpdater.addProof(evidenceRequest, idDocData);
         } catch (RestClientException | URISyntaxException e) {
-            System.out.println("IdentityUpdater.process");
             log.log(Level.SEVERE, "Unexpected error adding proof to an evidence request (" + evidenceRequest.getIdentifyingNumber() + ").", e);
         }
     }

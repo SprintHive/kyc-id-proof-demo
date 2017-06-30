@@ -35,7 +35,6 @@ public class IdentityUpdater {
     @Recover
     public void recover(HttpServerErrorException e, IdentityEvidenceRequest evidenceRequest, IdDocData idDocData) {
         // ... panic
-        System.out.println("IdentityUpdater.recover");
         handleException(e, evidenceRequest, idDocData);
     }
 
