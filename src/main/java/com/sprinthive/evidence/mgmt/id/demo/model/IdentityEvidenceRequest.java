@@ -5,9 +5,6 @@ import lombok.Data;
 import java.util.Date;
 import java.util.Map;
 
-/**
- * Created by dirk on 2017/06/21.
- */
 @Data
 public class IdentityEvidenceRequest {
 

@@ -4,9 +4,6 @@ import lombok.Data;
 
 import java.util.Date;
 
-/**
- * Created by dirk on 2017/06/21.
- */
 @Data
 public class IdDocData {
 
